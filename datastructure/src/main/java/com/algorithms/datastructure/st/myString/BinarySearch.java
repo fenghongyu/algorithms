@@ -9,10 +9,10 @@ public class BinarySearch {
     public static void main(String[] args) {
         int[] a = {1,2,3,4,5,6,7};
         BinarySearch search = new BinarySearch();
-        System.out.println(search.BinarySearchs(a, 0, 6, 10));
+        System.out.println(search.binarySearchs(a, 0, 6, 10));
     }
 
-    public int BinarySearchs(int[] a, int lo, int hi, int target) {
+    public int binarySearchs(int[] a, int lo, int hi, int target) {
         if(lo>hi) {
             return -1;
         }
@@ -23,10 +23,10 @@ public class BinarySearch {
         }
         if(a[mind]<target) {
             lo = mind + 1;
-            return BinarySearchs(a, lo, hi, target);
+            return binarySearchs(a, lo, hi, target);
         } else {
             hi = mind - 1;
-            return BinarySearchs(a, lo, hi, target);
+            return binarySearchs(a, lo, hi, target);
         }
     }
 }
