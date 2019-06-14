@@ -7,7 +7,9 @@ package com.algorithms.datastructure.st.myString;
 public class MyQuickSort extends Example {
 
     public static void main(String[] args) {
-        Integer[] a = {4,3,5,11,15,21,28,12,17,89,2,6,1};
+//        anagram
+//        Integer[] a = {4,3,5,11,15,21,28,12,17,89,2,6,1};
+        Integer[] a = {1,3,1,5,7,1,9};
         sort(a, 0, a.length-1);
         assert isSorted(a);
         show(a);
@@ -25,7 +27,8 @@ public class MyQuickSort extends Example {
     private static int partion(Integer[] a, int lo, int hi) {
         int pivot = a[lo];
         while (lo < hi){
-            while (pivot < a[hi] && lo<hi){
+
+            while (pivot <= a[hi] && lo<hi){
                 //从后半部分扫描
                 hi--;
             }
@@ -35,7 +38,7 @@ public class MyQuickSort extends Example {
             }
             a[hi] = a[lo];
         }
-        a[hi] = pivot;
+        a[lo] = pivot;
         return hi;
     }
 

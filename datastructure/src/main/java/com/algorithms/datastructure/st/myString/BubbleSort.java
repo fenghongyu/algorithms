@@ -16,8 +16,8 @@ public class BubbleSort extends Example{
     public static void bubbleSort(Comparable[] a) {
         int length = a.length;
         for(int i=0;i<length;i++) {
-            for(int j=i+1;j<length;j++) {
-                if(less(a[i], a[j])) {
+            for(int j=0;j<length-1;j++) {
+                if(less(a[j], a[j+1])) {
                     exch(a, i, j);
                 }
             }

@@ -11,7 +11,6 @@ public class MySelection extends Example {
                 }
             }
             exch(a, i, min);
-
         }
     }
 
