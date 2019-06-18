@@ -93,6 +93,10 @@ public class BinaryTreeSearch {
         beforeOrderNode(root.getRightChild());
     }
 
+    /**
+     * 后序遍历
+     * @param root
+     */
     public void afterOrderNode(Node root) {
         if(root == null) {
             return;
@@ -102,6 +106,42 @@ public class BinaryTreeSearch {
         printNode(root);
     }
 
+    public boolean deleteNode(Node p) {
+
+        if(p == null) {
+            return false;
+        }
+
+        if(p.getRightChild() == null) {
+            //右树为空，将左节点的左子孩子，替换它自己
+            p = p.getLeftChild();
+            return true;
+        } else if(p.getLeftChild() == null) {
+            p = p.getRightChild();
+            return true;
+        }
+
+        if(p.getLeftChild() != null && p.getRightChild() != null) {
+            //左右节点都不为空，，再将s的
+            Node q = p;
+            Node s = q.getLeftChild();
+            while (s.getRightChild() != null){
+                q=s;
+                s=s.getRightChild();
+            }
+            // 找出p 的前驱节点（后驱同理）s，替换p
+            p=s;
+            if(p != q) {
+               q.setRightChild(s.getLeftChild());
+               return true;
+            } else {
+                q.setLeftChild(s.getLeftChild());
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void printNode(Node node){
         System.out.print(node == null ? -1 : node.getValue()+" ");
     }
@@ -109,20 +149,31 @@ public class BinaryTreeSearch {
 
     public static void main(String[] args) {
         BinaryTreeSearch bts = new BinaryTreeSearch();
-        bts.addNode(5);
-        bts.addNode(7);
-        bts.addNode(4);
-        bts.addNode(8);
-        bts.addNode(6);
-        bts.addNode(2);
-        bts.addNode(3);
-        bts.addNode(9);
-        bts.beforeOrderNode(bts.root);
-        System.out.println(" ");
-        bts.inOrderNode(bts.root);
+        bts.addNode(62);
+        bts.addNode(58);
+        bts.addNode(88);
+        bts.addNode(48);
+        bts.addNode(73);
+        bts.addNode(99);
+        bts.addNode(35);
+        bts.addNode(51);
+        bts.addNode(93);
+        bts.addNode(29);
+        bts.addNode(37);
+        bts.addNode(49);
+        bts.addNode(56);
+        bts.addNode(36);
+        bts.addNode(50);
+//        bts.beforeOrderNode(bts.root);
+//        System.out.println(" ");
+//        bts.inOrderNode(bts.root);
+//        System.out.println(" ");
+//        bts.afterOrderNode(bts.root);
+//        System.out.println(" ");
+        bts.afterOrderNode(bts.root);
+        bts.deleteNode(bts.search(50, bts.root));
         System.out.println(" ");
         bts.afterOrderNode(bts.root);
-        System.out.println(" ");
-        bts.printNode(bts.search(2, bts.root));
+//        bts.printNode(bts.search(5, bts.root));
     }
 }
