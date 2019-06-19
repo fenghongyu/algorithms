@@ -227,6 +227,44 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
+    public void removeE(E e){
+        root = removeNode(root, e);
+    }
+
+    private Node removeNode(Node node, E e) {
+        if(node == null) {
+            return null;
+        }
+        if(e.compareTo((E)node.e) < 0) {
+            node.left = removeNode(node.left, e);
+            return node;
+        } else if(e.compareTo((E)node.e) > 0) {
+            node.right = removeNode(node.right, e);
+            return node;
+        } else {
+            //1.左子树为空
+            if(node.left == null) {
+                size--;
+                Node nodeRight = node.right;
+                node.right = null;
+                return nodeRight;
+            }
+            //2。右子树为空
+            if(node.right == null) {
+                size--;
+                Node nodeLeft = node.left;
+                node.left = null;
+                return nodeLeft;
+            }
+            //3。左右子树均不为空
+            Node successor = miniNode(node.right);
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            return successor;
+        }
+
+    }
+
     private E maxE() {
         Node maxNode = maxE(root);
         return (E)maxNode.e;
