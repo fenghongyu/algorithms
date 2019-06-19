@@ -167,7 +167,6 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-
     public E miniE() {
         if(root == null) {
             return null;
@@ -207,21 +206,7 @@ public class BST<E extends Comparable<E>> {
         }
         E maxE = maxE();
         root = removeMax(root);
-        return (E) root.e;
-    }
-
-    private E maxE() {
-        return (E)maxE(root).e;
-    }
-
-    private Node maxE(Node node) {
-        if(node == null) {
-            return null;
-        }
-        if(node.right == null) {
-            return node;
-        }
-        return maxE(node.right);
+        return maxE;
     }
 
     //移除以node 为根节点的二分搜索树中的最大节点
@@ -233,11 +218,28 @@ public class BST<E extends Comparable<E>> {
 
         if(node.right == null) {
             //找到最大的node,
+            Node nodeLeft = node.left;
+            node.left = null;
             size--;
-            return node.left;
+            return nodeLeft;
         }
         node.right = removeMax(node.right);
         return node;
+    }
+
+    private E maxE() {
+        Node maxNode = maxE(root);
+        return (E)maxNode.e;
+    }
+
+    private Node maxE(Node node) {
+        if(node == null) {
+            return null;
+        }
+        if(node.right == null) {
+            return node;
+        }
+        return maxE(node.right);
     }
 
     public static void main(String[] args) {
