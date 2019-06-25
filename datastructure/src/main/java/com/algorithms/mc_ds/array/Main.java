@@ -9,12 +9,15 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        int n = 1000000;
+        int n = 10000000;
         MaxHeap<Integer> maxHeap = new MaxHeap<>();
         Random random = new Random();
-        for(int i=0;i<1000;i++) {
+        for(int i=0;i<n;i++) {
             maxHeap.addE(random.nextInt(10000));
         }
+        System.out.println(maxHeap.getSize());
+
+        maxHeap.replace(321);
 
         int[] arr = new int[n];
         for(int i=0;i<maxHeap.getSize();i++) {
