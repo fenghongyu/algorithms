@@ -7,10 +7,17 @@ package com.algorithms.leetcode;
  */
 public class PalindromeNumber {
     public static void main(String[] args) {
-        int num = 1220;
-        System.out.println(checkPalindromeNumer(num));
+//        System.out.println(checkPalindromeNumer(num));
+        System.out.println(checkPalindromeNumer2(1220));
+        System.out.println(checkPalindromeNumer2(1221));
+        System.out.println(checkPalindromeNumer2(23432));
     }
 
+    /**
+     * 时间复杂度: O(N) 空间复杂度: O(N)
+     * @param num
+     * @return
+     */
     private static boolean checkPalindromeNumer(int num) {
         if (num < 0) {
             return false;
@@ -28,5 +35,23 @@ public class PalindromeNumber {
             }
         }
         return true;
+    }
+
+    /**
+     * 时间复杂度: O(1) 空间复杂度: O(1)
+     * @param num
+     * @return
+     */
+    private static boolean checkPalindromeNumer2(int num) {
+        if (num < 0) {
+            return false;
+        }
+        int tmp = ReverseInteger.reverse(num);
+        if(tmp == num) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }
