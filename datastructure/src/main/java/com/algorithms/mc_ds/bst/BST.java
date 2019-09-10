@@ -155,6 +155,22 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    //层序遍历2
+    public void levelOrder2() {
+        Queue<Node> queue = new LinkedBlockingQueue<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node cur = queue.remove();
+            System.out.println(cur.e);
+            if(cur.left != null) {
+                queue.add(cur.left);
+            }
+            if(cur.right != null) {
+                queue.add(cur.right);
+            }
+        }
+    }
+
     //看以node为根的二分搜索树中是否包含元素e，递归算法。
     private boolean contains(Node node, E e) {
         if(node == null) {
@@ -282,8 +298,8 @@ public class BST<E extends Comparable<E>> {
 
     public static void main(String[] args) {
         BST<Integer> bst = new BST<>();
-//        int[] nums = {5, 3, 6, 8, 4, 2};
-        int[] nums = {5, 3, 4, 2};
+        int[] nums = {5, 3, 6, 8, 4, 2};
+//        int[] nums = {5, 3, 4, 2};
         for(int num: nums)
             bst.add(num);
 
@@ -300,16 +316,16 @@ public class BST<E extends Comparable<E>> {
 //        System.out.println();
 //        bst.postOrder();
 //        System.out.println();
-        bst.levelOrder();
-        System.out.println();
-        System.out.println(bst.maxE());
-        System.out.println();
-        bst.removeMax();
+        bst.levelOrder2();
+//        System.out.println();
+//        System.out.println(bst.maxE());
+//        System.out.println();
 //        bst.removeMax();
 //        bst.removeMax();
-        System.out.println(bst.maxE());
-        System.out.println();
-        bst.levelOrder();
+//        bst.removeMax();
+//        System.out.println(bst.maxE());
+//        System.out.println();
+//        bst.levelOrder();
 //        System.out.println();
 //        System.out.println(bst.miniE());
 //        System.out.println();
