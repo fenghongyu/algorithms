@@ -6,4 +6,9 @@ package com.base.javabase.concurrent.lock;
  * @author fenghongyu
  */
 public class MyMain {
+
+    public static void main(String[] args) {
+        MySynchronized mySynchronized = new MySynchronized();
+        mySynchronized.getOne();
+    }
 }
