@@ -22,14 +22,38 @@ public class BubbleSort extends Example {
         show(a);
     }
 
-    public static void sort(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
-//            boolean flag = false;
-            for(int j=1;j<a.length; j++) {
-                if(less(a[j],a[j-1])) {
-                    exch(a, j, j-1);
+    public static void sort(Integer[] a) {
+        for(int i=0;i<a.length;i++) {
+            for(int j=0;j<a.length-1;j++) {
+                if(a[j]>a[j+1]) {
+                    Integer tmp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = tmp;
                 }
             }
         }
+
     }
+
+    //升序
+//    public static void sort(Comparable[] a) {
+//        for(int i=0;i<a.length;i++) {
+//            for(int j=1;j<a.length;j++) {
+//                if(less(a[j], a[j-1])) {
+//                    exch(a, j, j-1);
+//                }
+//            }
+//        }
+//    }
+
+//    public static void sort(Comparable[] a) {
+//        for (int i = 0; i < a.length; i++) {
+////            boolean flag = false;
+//            for(int j=1;j<a.length; j++) {
+//                if(less(a[j],a[j-1])) {
+//                    exch(a, j, j-1);
+//                }
+//            }
+//        }
+//    }
 }

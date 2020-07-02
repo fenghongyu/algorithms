@@ -1,5 +1,6 @@
 package com.base.javabase.concurrent.mythread;
 
+import java.util.Stack;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,6 +10,8 @@ public class ThreadPoolDemo {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService newCachedThreadPool = Executors.newCachedThreadPool();
         Future future = newCachedThreadPool.submit(new MyCallable());
+        Stack<String> strings = new Stack<>();
+        strings.push("");
         if(!future.isDone()) {
             System.out.println("please wait");
         }
